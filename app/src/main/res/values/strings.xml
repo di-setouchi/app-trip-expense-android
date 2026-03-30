@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">TripExpense</string>
+
+    <!-- HomeScreen -->
+    <string name="home_trip_area_title">Trip</string>
+    <string name="home_trip_card_no_trip_title">No trip</string>
+    <string name="home_trip_card_no_trip_message">Create a trip to start</string>
+    <string name="home_add_trip_title">Add trip</string>
+    <string name="home_expenses_area_title">Expenses</string>
+    <string name="home_add_button">+</string>
+    <string name="last_updated_exchange_Rates">Last Updated Exchange Rates</string>
+
+    <!-- TripDetailScreen -->
+    <string name="trip_detail_trip_overview_title">Trip overview</string>
+    <string name="trip_detail_trip_overview_base_currency">Base currency</string>
+    <string name="trip_detail_summary_title">Summary</string>
+    <string name="trip_detail_total_with_currency">Total (%1$s)</string>
+    <string name="trip_detail_expenses_title">Expenses</string>
+    <string name="trip_detail_delete_dialog_title">Delete this trip?</string>
+    <string name="trip_detail_delete_dialog_message">This will delete the trip and all its expenses. This action can’t be undone.</string>
+
+    <!-- EditTripScreen -->
+    <string name="edit_trip_title">Edit Trip</string>
+    <string name="add_trip_title">Add Trip</string>
+    <string name="edit_trip_trip_name">Trip Name</string>
+    <string name="edit_trip_base_currency">Base Currency (fixed)</string>
+    <string name="edit_trip_base_currency_info_message">All expenses in this trip are converted to this currency and saved at the time of entry.</string>
+    <string name="edit_trip_local_currencies">Local currencies</string>
+    <string name="edit_trip_local_currencies_drop_down_menu_box">Add currency</string>
+    <string name="edit_trip_duration">Duration</string>
+    <string name="edit_trip_start_date">Start Date</string>
+    <string name="edit_trip_end_date">End Date</string>
+    <string name="edit_trip_duration_warning">Start date must be before end date</string>
+
+    <!-- ExpenseDetailScreen -->
+    <string name="expense_detail_base_currency">Base currency</string>
+    <string name="expense_detail_trip">Trip</string>
+    <string name="expense_detail_category">Category</string>
+    <string name="expense_detail_date">Date</string>
+    <string name="expense_detail_exchange_rate">Exchange Rate</string>
+    <string name="expense_detail_rate_fetched">Rate Fetched</string>
+    <string name="expense_detail_note_section">Note</string>
+    <string name="expense_detail_dialog_title">Delete Expense?</string>
+    <string name="expense_detail_delete_dialog_message">This will delete the expense. This action can’t be undone.</string>
+
+    <!-- EditExpenseScreen -->
+    <string name="edit_expense_title">Edit Expense</string>
+    <string name="add_expense_title">Add Expense</string>
+    <string name="edit_expense_exchange_rate_label">Exchange rate</string>
+    <string name="edit_expense_date_label">Date</string>
+    <string name="edit_expense_category_label">Category</string>
+    <string name="edit_expense_note_label">Note</string>
+
+    <!-- Reusable Component -->
+    <string name="edit_button">Edit</string>
+    <string name="delete_button">Delete</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="save_button">Save</string>
+    <string name="ok_button">OK</string>
+
+    <!-- Error Message -->
+    <string name="rate_fetch_failed_dialog_title">Exchange rate unavailable</string>
+    <string name="rate_fetch_failed_dialog_message">"We couldn't fetch the exchange rate.\nPlease try again later."</string>
+    <string name="save_trip_failed_dialog_title">Something Went Wrong</string>
+    <string name="save_trip_failed_dialog_message">"We couldn't save the trip.\nPlease try again later."</string>
+    <string name="save_expense_failed_dialog_title">Something Went Wrong</string>
+    <string name="save_expense_failed_dialog_message">"We couldn't save the expense.\nPlease try again later."</string>
+    <string name="delete_expense_failed_dialog_title">Something Went Wrong</string>
+    <string name="delete_expense_failed_dialog_message">"We couldn't delete the expense.\nPlease try again later."</string>
+    <string name="delete_trip_failed_dialog_title">Something Went Wrong</string>
+    <string name="delete_trip_failed_dialog_message">"We couldn't delete the trip.\nPlease try again later."</string>
+
+</resources>
