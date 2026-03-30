@@ -100,7 +100,7 @@ fun HomeScreen(
                             "-"
                         }
                         Text(
-                            text = stringResource(R.string.last_updated_exchange_Rates),
+                            text = stringResource(R.string.exchange_rate_last_updated),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
