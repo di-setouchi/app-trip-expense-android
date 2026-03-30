@@ -8,7 +8,7 @@
     <string name="home_add_trip_title">Add trip</string>
     <string name="home_expenses_area_title">Expenses</string>
     <string name="home_add_button">+</string>
-    <string name="last_updated_exchange_Rates">Last Updated Exchange Rates</string>
+    <string name="exchange_rate_last_updated">Exchange Rate Last Updated</string>
 
     <!-- TripDetailScreen -->
     <string name="trip_detail_trip_overview_title">Trip overview</string>
