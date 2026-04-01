@@ -157,19 +157,30 @@ class HomeViewModel(
      * Performs a manual sync of exchange rates.
      */
     internal fun onSyncClick() {
-        val currentState = uiState.value
+        // Prevent double sync
+        if (_isSyncing.value) return
 
-        // Prevent double sync or sync when there are no trips
-        if (_isSyncing.value || currentState.trips.isEmpty()) return
+        viewModelScope.launch {
+            // Set syncing to true early to prevent concurrent executions
+            _isSyncing.value = true
 
-        // Extract all unique local currencies used in all existing trips
-        val currenciesToSync = currentState.trips
-            .flatMap { it.localCurrencyCodes }
-            .distinct()
+            try {
+                // Wait for the first emission to ensure trips are loaded from DB
+                val trips = tripRepository.observeTrips().first()
+                if (trips.isEmpty()) return@launch
 
-        if (currenciesToSync.isEmpty()) return
+                // Extract all unique local currencies used in all existing trips
+                val currenciesToSync = trips
+                    .flatMap { it.localCurrencyCodes }
+                    .distinct()
 
-        executeSync(currenciesToSync)
+                if (currenciesToSync.isEmpty()) return@launch
+
+                executeSync(currenciesToSync)
+            } finally {
+                _isSyncing.value = false
+            }
+        }
     }
 
     // ---------- Internal logic for sync ----------
@@ -178,28 +189,21 @@ class HomeViewModel(
      * Executes the sync operation for the provided currencies.
      * Updates the last sync timestamp only if all fetch operations are successful.
      */
-    private fun executeSync(currenciesToSync: List<String>) {
-        viewModelScope.launch {
-            _isSyncing.value = true
-            var hasNetworkError = false
+    private suspend fun executeSync(currenciesToSync: List<String>) {
+        var hasNetworkError = false
 
-            try {
-                currenciesToSync.forEach { currencyCode ->
-                    val result = rateSnapshotRepository.fetchAndSaveRate(currencyCode)
-                    if (result.isFailure) {
-                        hasNetworkError = true
-                    }
-                }
-
-                if (hasNetworkError) {
-                    _events.tryEmit(HomeEvent.RateFetchFailed)
-                } else {
-                    // Update sync timestamp if all requests succeeded
-                    userPreferencesRepository.updateLastSyncTimestamp(System.currentTimeMillis())
-                }
-            } finally {
-                _isSyncing.value = false
+        currenciesToSync.forEach { currencyCode ->
+            val result = rateSnapshotRepository.fetchAndSaveRate(currencyCode)
+            if (result.isFailure) {
+                hasNetworkError = true
             }
+        }
+
+        if (hasNetworkError) {
+            _events.tryEmit(HomeEvent.RateFetchFailed)
+        } else {
+            // Update sync timestamp if all requests succeeded
+            userPreferencesRepository.updateLastSyncTimestamp(System.currentTimeMillis())
         }
     }
 }
