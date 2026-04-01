@@ -84,7 +84,7 @@ fun TripDetailScreen(
                 },
                 onDeleteClick = {
                     menuExpanded = false
-                    menuActionGuard.runIfUnlocked { showDeleteDialog = true }
+                    showDeleteDialog = true
                 }
             )
         },

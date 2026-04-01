@@ -104,7 +104,7 @@ fun ExpenseDetailScreen(
                 },
                 onDeleteClick = {
                     menuExpanded = false
-                    menuActionGuard.runIfUnlocked { showDeleteDialog = true }
+                    showDeleteDialog = true
                 }
             )
         }
